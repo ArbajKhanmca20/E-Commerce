@@ -1,0 +1,92 @@
+<section class="login">
+  <div class="container">
+    <div class="row m-5 g-0">
+      <div class="col-md-5">
+        <img
+          src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-3530.jpg?size=338&ext=jpg&ga=GA1.2.955983068.1659613324"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <div class="col-md-7 px-5">
+        <h1 class="fw-bolder py-3">Login</h1>
+        <h4 class="mb-2">SignIn into your account</h4>
+        <form
+          (submit)="loginuser(loginform)"
+          #loginform="ngForm"
+          class="myform"
+        >
+          <div class="form-row">
+            <div class="col-md-7 py-2">
+              <input
+                type="email"
+                class="form-control p-2"
+                placeholder="Enter your Email"
+                name="email"
+                #emailInput="ngModel"
+                [ngClass]="
+                  emailInput.invalid &&
+                  (emailInput.touched || isSubmitted)
+                    ? 'border-danger'
+                    : emailInput.valid
+                    ? 'border-success'
+                    :''"
+                email
+                ngModel
+                required
+
+              />
+              <div class="h-10">
+                <small
+                  *ngIf="
+                    emailInput.invalid && (emailInput.touched || isSubmitted)
+                  "
+                  class="text-danger"
+                  >Invalid Email</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-7 py-2">
+              <input
+                type="password"
+                class="form-control p-2"
+                placeholder="Enter your password"
+                name="password"
+                #passwordInput="ngModel"
+                ngModel
+                required
+                [ngClass]="
+                  passwordInput.invalid &&
+                  (passwordInput.touched || isSubmitted)
+                    ? 'border-danger'
+                    : passwordInput.valid
+                    ? 'border-success'
+                    : ''
+                "
+              />
+              <div class="h-10">
+                <small
+                  *ngIf="
+                    passwordInput.invalid &&
+                    (passwordInput.touched || isSubmitted)
+                  "
+                  class="text-danger"
+                  >Invalid Password</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-7 py-4">
+              <button  type="submit" class="btn btn-purple">Login</button>
+            </div>
+          </div>
+          <a href="">Forget password?</a>
+          <p>Don't have an account? <a routerLink="/signup">Register Here</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
